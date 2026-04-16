@@ -8,9 +8,16 @@
     "typecheck:libs": "echo skipping"
   },
   "private": true,
+  "pnpm": {
+    "supportedArchitectures": {
+      "os": ["current", "linux"],
+      "cpu": ["x64"]
+    }
+  },
   "devDependencies": {
     "@rollup/rollup-linux-x64-musl": "^4.9.0",
     "lightningcss-linux-x64-musl": "1.32.0",
+    "@tailwindcss/oxide-linux-x64-musl": "4.2.2",
     "typescript": "~5.9.2",
     "prettier": "^3.8.1"
   }
