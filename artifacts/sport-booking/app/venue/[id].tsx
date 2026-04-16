@@ -82,19 +82,31 @@ export default function VenueDetailScreen() {
         {/* Hero image */}
         <View style={styles.heroContainer}>
           <Image source={{ uri: venue.image }} style={styles.heroImage} />
-          <View style={[styles.heroOverlay]}>
+          <View
+            style={[
+              styles.heroOverlay,
+              {
+                top: Platform.OS === "web"
+                  ? 67 + 10
+                  : insets.top + 10,
+              },
+            ]}
+          >
             <Pressable
-              onPress={() => router.back()}
-              style={[styles.iconBtn, { backgroundColor: "rgba(255,255,255,0.9)" }]}
+              onPress={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                router.back();
+              }}
+              style={[styles.iconBtn, { backgroundColor: "rgba(255,255,255,0.95)" }]}
             >
-              <Feather name="arrow-left" size={20} color={colors.foreground} />
+              <Feather name="chevron-left" size={22} color={colors.foreground} />
             </Pressable>
             <Pressable
               onPress={() => {
                 Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
                 toggleFavorite(venue.id);
               }}
-              style={[styles.iconBtn, { backgroundColor: "rgba(255,255,255,0.9)" }]}
+              style={[styles.iconBtn, { backgroundColor: "rgba(255,255,255,0.95)" }]}
             >
               <Feather name="heart" size={20} color={favorite ? "#ff3b5c" : "#999"} />
             </Pressable>
@@ -288,7 +300,6 @@ const styles = StyleSheet.create({
   heroImage: { width: "100%", height: 280, resizeMode: "cover" },
   heroOverlay: {
     position: "absolute",
-    top: 50,
     left: 16,
     right: 16,
     flexDirection: "row",
