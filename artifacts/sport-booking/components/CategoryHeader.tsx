@@ -1,6 +1,8 @@
 import { Feather } from "@expo/vector-icons";
+import * as Haptics from "expo-haptics";
+import { router } from "expo-router";
 import React from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
+import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { useColors } from "@/hooks/useColors";
@@ -28,8 +30,18 @@ export function CategoryHeader({ title, subtitle, icon, accentColor }: CategoryH
         },
       ]}
     >
+      <Pressable
+        onPress={() => {
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+          router.back();
+        }}
+        style={[styles.backBtn, { backgroundColor: accent + "15" }]}
+        hitSlop={8}
+      >
+        <Feather name="chevron-left" size={22} color={accent} />
+      </Pressable>
       <View style={[styles.iconWrapper, { backgroundColor: accent + "18" }]}>
-        <Feather name={icon as any} size={22} color={accent} />
+        <Feather name={icon as any} size={20} color={accent} />
       </View>
       <View style={styles.textGroup}>
         <Text style={[styles.title, { color: colors.foreground }]}>{title}</Text>
@@ -45,10 +57,17 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
     paddingBottom: 14,
     borderBottomWidth: 1,
-    gap: 12,
+    gap: 10,
+  },
+  backBtn: {
+    width: 38,
+    height: 38,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
   },
   iconWrapper: {
     width: 46,

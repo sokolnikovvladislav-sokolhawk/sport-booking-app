@@ -1,6 +1,8 @@
 import { Feather } from "@expo/vector-icons";
+import * as Haptics from "expo-haptics";
+import { router } from "expo-router";
 import React from "react";
-import { Platform, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { VenueCard } from "@/components/VenueCard";
@@ -33,10 +35,20 @@ export default function KidsScreen() {
           styles.kidsHero,
           {
             backgroundColor: colors.kids.primary,
-            paddingTop: Platform.OS === "web" ? 67 + 12 : insets.top + 20,
+            paddingTop: Platform.OS === "web" ? 67 + 12 : insets.top + 12,
           },
         ]}
       >
+        <Pressable
+          onPress={() => {
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+            router.back();
+          }}
+          style={styles.backBtn}
+          hitSlop={8}
+        >
+          <Feather name="chevron-left" size={22} color="#fff" />
+        </Pressable>
         <Text style={styles.kidsEmoji}>⭐</Text>
         <Text style={styles.kidsHeroTitle}>Детский спорт</Text>
         <Text style={styles.kidsHeroSubtitle}>
@@ -83,6 +95,16 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 28,
     alignItems: "center",
     gap: 8,
+  },
+  backBtn: {
+    alignSelf: "flex-start",
+    width: 38,
+    height: 38,
+    borderRadius: 12,
+    backgroundColor: "rgba(255,255,255,0.25)",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 4,
   },
   kidsEmoji: {
     fontSize: 48,
