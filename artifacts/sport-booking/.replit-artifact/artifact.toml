@@ -1,0 +1,27 @@
+kind = "mobile"
+previewPath = "/"
+title = "SportBook — Бронирование спортивных услуг"
+version = "1.0.0"
+id = "artifacts/sport-booking"
+router = "expo-domain"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+ensurePreviewReachable = "/status"
+name = "expo"
+paths = [ "/" ]
+localPort = 26012
+
+[services.development]
+run = "pnpm --filter @workspace/sport-booking run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/sport-booking", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/sport-booking", "run", "serve" ]
+
+[services.env]
+PORT = "26012"
+BASE_PATH = "/"

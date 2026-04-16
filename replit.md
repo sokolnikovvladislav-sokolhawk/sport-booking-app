@@ -16,6 +16,30 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - **API codegen**: Orval (from OpenAPI spec)
 - **Build**: esbuild (CJS bundle)
 
+## Artifacts
+
+### SportBook — Бронирование спортивных услуг (`artifacts/sport-booking`)
+Mobile app built with Expo (React Native). Sports booking platform.
+
+**Features:**
+- 4 main categories: Gyms, Sport sections, Sports medicine, Kids sports
+- Venue cards with ratings, reviews, photos gallery
+- Trainer cards with specialization, rating, description
+- Integrated booking calendar with available time slots
+- Bookings management (confirm/cancel)
+- Favorites system
+- AsyncStorage for persistent state (no backend required)
+
+**Key files:**
+- `app/(tabs)/index.tsx` — Home screen with category grid
+- `app/(tabs)/gyms.tsx`, `sections.tsx`, `medical.tsx`, `kids.tsx` — Category screens
+- `app/(tabs)/bookings.tsx` — Bookings management
+- `app/venue/[id].tsx` — Venue detail with booking flow
+- `components/VenueCard.tsx`, `TrainerCard.tsx`, `BookingCalendar.tsx`, `ReviewCard.tsx`
+- `context/AppContext.tsx` — App state (favorites, bookings)
+- `data/venues.ts` — Mock data for all venues and trainers
+- `constants/colors.ts` — Design tokens (orange primary #FF6B35)
+
 ## Key Commands
 
 - `pnpm run typecheck` — full typecheck across all packages

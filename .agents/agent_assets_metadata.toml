@@ -1,0 +1,26 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "qlbC-TzMRYmwyIHBNn30G"
+uri = "file://artifacts/sport-booking/assets/images/icon.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "8GWaelB1o1he23UYauwok"
+uri = "file://artifacts/sport-booking/assets/images/gym-hero.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "q-QVIWlhfM3x1fd_kP5lU"
+uri = "file://artifacts/sport-booking/assets/images/kids-hero.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "UkzYox59Wpd4YoU759nPd"
+uri = "file://artifacts/sport-booking/assets/images/medical-hero.png"
+type = "image"
+title = "generated_image"
